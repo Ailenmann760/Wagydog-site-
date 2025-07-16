@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WagyDog - The Next Big Meme Coin on BNB Chain</title>
+    
+    <!-- Tailwind CSS for styling -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Poppins -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
+
+    <style>
+        /* Applying the Poppins font to the body */
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #0a0a0a;
+            color: #f0f0f0;
+        }
+        /* Custom gradient text */
+        .gradient-text {
+            background: linear-gradient(90deg, #F9D423, #e7a403);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-fill-color: transparent;
+        }
+        /* Custom button style */
+        .btn-primary {
+            @apply bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-900 font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-yellow-500/50 transform hover:scale-105 transition-all duration-300 ease-in-out;
+        }
+        /* Glassmorphism effect for cards */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 1rem;
+        }
+        /* Animated background blobs */
+        .blob {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0.4;
+            z-index: -1;
+        }
+    </style>
+</head>
+<body class="relative overflow-x-hidden">
+
+    <!-- Animated Background Blobs -->
+    <div class="blob w-96 h-96 bg-yellow-400 top-0 -left-32 animate-pulse"></div>
+    <div class="blob w-96 h-96 bg-blue-500 bottom-0 -right-32 animate-pulse animation-delay-4000"></div>
+
+    <!-- Header & Navigation -->
+    <header class="fixed top-0 left-0 right-0 z-50 bg-black/30 backdrop-blur-sm">
+        <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+            <!-- Logo -->
+            <a href="#home" class="text-2xl font-black gradient-text">
+                WagyDog
+            </a>
+            
+            <!-- Desktop Menu -->
+            <nav class="hidden md:flex items-center space-x-8">
+                <a href="#about" class="text-white hover:text-yellow-400 transition-colors duration-300">About</a>
+                <a href="#contract" class="text-white hover:text-yellow-400 transition-colors duration-300">Contract</a>
+                <a href="#nft" class="text-white hover:text-yellow-400 transition-colors duration-300">Wagy NFT</a>
+                <a href="#whitepaper" class="text-white hover:text-yellow-400 transition-colors duration-300">Whitepaper</a>
+                <a href="#contact" class="text-white hover:text-yellow-400 transition-colors duration-300">Contact</a>
+            </nav>
+
+            <!-- Mobile Menu Button -->
+            <button id="menu-btn" class="md:hidden focus:outline-none z-50">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                </svg>
+            </button>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden absolute top-0 left-0 w-full bg-black/90">
+            <div class="flex flex-col items-center space-y-6 py-8 mt-16">
+                <a href="#about" class="text-white text-lg hover:text-yellow-400 mobile-link">About</a>
+                <a href="#contract" class="text-white text-lg hover:text-yellow-400 mobile-link">Contract</a>
+                <a href="#nft" class="text-white text-lg hover:text-yellow-400 mobile-link">Wagy NFT</a>
+                <a href="#whitepaper" class="text-white text-lg hover:text-yellow-400 mobile-link">Whitepaper</a>
+                <a href="#contact" class="text-white text-lg hover:text-yellow-400 mobile-link">Contact</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- ======================================================= -->
+        <!-- Hero Section -->
+        <!-- You can edit the headline and subtext here. -->
+        <!-- ======================================================= -->
+        <section id="home" class="min-h-screen flex items-center justify-center text-center px-6">
+            <div class="container mx-auto">
+                <h1 class="text-5xl md:text-7xl lg:text-8xl font-black uppercase">
+                    Meet <span class="gradient-text">WagyDog</span>
+                </h1>
+                <p class="text-lg md:text-2xl mt-4 max-w-3xl mx-auto text-gray-300">
+                    The friendliest meme coin wagging its tail on the powerful <span class="font-bold text-yellow-400">BNB Chain</span>.
+                </p>
+                <div class="mt-12">
+                    <a href="#about" class="btn-primary">Learn More</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================= -->
+        <!-- About Us Section -->
+        <!-- Edit the text below to describe WagyDog. -->
+        <!-- ======================================================= -->
+        <section id="about" class="py-20 px-6">
+            <div class="container mx-auto text-center">
+                <h2 class="text-4xl font-bold mb-4">About <span class="gradient-text">WagyDog</span></h2>
+                <div class="max-w-4xl mx-auto glass-card p-8 mt-8">
+                    <p class="text-lg text-gray-200 leading-relaxed">
+                        WagyDog isn't just another token; it's a movement. Born on the robust and efficient <strong class="text-yellow-400">BNB Chain</strong>, WagyDog embodies a culture of fun, community, and forward-thinking decentralized finance. We believe in the power of memes to bring people together and create value in a decentralized world. Our mission is to build a vibrant ecosystem that rewards holders and celebrates the joyful spirit of our four-legged friends. Join the pack and let's wag our way to the moon!
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================= -->
+        <!-- Contract Address Section -->
+        <!-- Update the address when it's ready. -->
+        <!-- ======================================================= -->
+        <section id="contract" class="py-20 px-6 bg-black/20">
+            <div class="container mx-auto text-center">
+                <h2 class="text-4xl font-bold mb-4">Contract Address</h2>
+                <div class="max-w-4xl mx-auto glass-card p-8 mt-8">
+                    <p class="text-2xl md:text-3xl font-mono break-all bg-gray-900 p-4 rounded-lg">
+                        0xdxxxxxxxxx... <span class="gradient-text font-bold">coming 🔜</span>
+                    </p>
+                    <p class="mt-4 text-gray-400">Our contract is currently under audit to ensure maximum security. It will be released here very soon!</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================= -->
+        <!-- Wagy NFT Section -->
+        <!-- Add a link to your NFT marketplace (e.g., OpenSea) by replacing the "#" in the href attribute. -->
+        <!-- ======================================================= -->
+        <section id="nft" class="py-20 px-6">
+            <div class="container mx-auto text-center">
+                <h2 class="text-4xl font-bold mb-4"><span class="gradient-text">Wagy</span> NFT Collection</h2>
+                <div class="max-w-4xl mx-auto glass-card p-8 mt-8">
+                    <p class="text-lg text-gray-200 mb-6">
+                        Get ready for a unique collection of WagyDog NFTs! Each NFT is a one-of-a-kind piece of art, granting holders exclusive benefits within the WagyDog ecosystem.
+                    </p>
+                    <!-- To make this button clickable, replace '#' with your NFT marketplace URL -->
+                    <a href="#" class="btn-primary opacity-50 cursor-not-allowed">Coming Soon</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- ======================================================= -->
+        <!-- Whitepaper Section -->
+        <!-- Add a link to your whitepaper PDF by replacing the "#" in the href attribute. -->
+        <!-- ======================================================= -->
+        <section id="whitepaper" class="py-20 px-6 bg-black/20">
+            <div class="container mx-auto text-center">
+                <h2 class="text-4xl font-bold mb-4">Read Our Whitepaper</h2>
+                 <div class="max-w-4xl mx-auto glass-card p-8 mt-8">
+                    <p class="text-lg text-gray-200 mb-6">
+                        Dive deep into the WagyDog project. Our whitepaper details our vision, tokenomics, roadmap, and the technology powering our ecosystem.
+                    </p>
+                    <!-- To make this button clickable, replace '#' with your whitepaper link -->
+                    <a href="#" class="btn-primary">Read Whitepaper</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- ======================================================= -->
+    <!-- Footer / Contact Section -->
+    <!-- Your contact email is here. -->
+    <!-- ======================================================= -->
+    <footer id="contact" class="py-12 px-6 border-t border-gray-800">
+        <div class="container mx-auto text-center text-gray-400">
+            <p class="text-2xl font-bold mb-4">Get In Touch</p>
+            <a href="mailto:Wagydogmeme@gmail.com" class="text-lg text-yellow-400 hover:text-yellow-300 transition-colors duration-300">
+                Wagydogmeme@gmail.com
+            </a>
+            <p class="mt-8">&copy; 2024 WagyDog. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+
+    <script>
+        // JavaScript for Mobile Menu Toggle and Smooth Scroll
+        const menuBtn = document.getElementById('menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+        const mobileLinks = document.querySelectorAll('.mobile-link');
+
+        // Toggle mobile menu
+        menuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+
+        // Close mobile menu when a link is clicked
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+    </script>
+</body>
+</html>
