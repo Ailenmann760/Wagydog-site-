@@ -81,6 +81,14 @@
             opacity: 1;
             transform: translateY(0);
         }
+        .animated-coming-soon {
+            @apply font-black text-white;
+            animation: pulse-glow 2.5s ease-in-out infinite;
+        }
+        @keyframes pulse-glow {
+            0%, 100% { opacity: 1; text-shadow: 0 0 10px #D946EF, 0 0 20px #D946EF; }
+            50% { opacity: 0.7; text-shadow: 0 0 20px #D946EF, 0 0 30px #D946EF; }
+        }
     </style>
 </head>
 <body class="relative">
@@ -89,12 +97,13 @@
     <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md shadow-sm">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="#home" class="flex items-center space-x-3">
-                <!-- This now correctly points to your logo file -->
                 <img src="wagydog-logo.jpg" alt="WagyDog Logo" class="h-12 w-auto">
                 <span class="text-2xl font-black text-gray-800 hidden sm:inline">WagyDog</span>
             </a>
             <nav class="hidden md:flex items-center space-x-8">
                 <a href="#about" class="nav-link">About</a>
+                <!-- Whitepaper link added to menu -->
+                <a href="https://wagydog.gitbook.io/wagydog-whitepaper" target="_blank" class="nav-link">Whitepaper</a>
                 <a href="#roadmap" class="nav-link">Roadmap</a>
                 <a href="#nft" class="nav-link">NFTs</a>
                 <a href="#contact" class="nav-link">Contact</a>
@@ -108,6 +117,8 @@
         <div id="mobile-menu" class="hidden md:hidden bg-white/95">
              <div class="flex flex-col items-center space-y-6 py-8">
                 <a href="#about" class="nav-link mobile-link">About</a>
+                <!-- Whitepaper link added to mobile menu -->
+                <a href="https://wagydog.gitbook.io/wagydog-whitepaper" target="_blank" class="nav-link mobile-link">Whitepaper</a>
                 <a href="#roadmap" class="nav-link mobile-link">Roadmap</a>
                 <a href="#nft" class="nav-link mobile-link">NFTs</a>
                 <a href="#contact" class="nav-link mobile-link">Contact</a>
@@ -134,7 +145,6 @@
                     </div>
                 </div>
                 <div class="flex justify-center p-4">
-                    <!-- ANIMATED LOGO -->
                     <img src="wagydog-logo.jpg" alt="WagyDog Official Logo" class="w-full max-w-sm md:max-w-md animate-float">
                 </div>
             </div>
@@ -150,6 +160,17 @@
                 <div class="max-w-4xl mx-auto content-card bg-white/10 text-white border-white/20 mt-12 space-y-6 animate-float" style="animation-duration: 10s;">
                     <p class="text-gray-300 text-lg leading-relaxed">WagyDog is a decentralized movement championing the idea that fun, finance, and freedom can coexist in the Web3 era. We are more than a token; we are a community-driven project on the BNB Chain, designed to merge the viral power of meme culture with tangible utility and genuine community governance.</p>
                 </div>
+            </div>
+        </section>
+
+        <!-- Whitepaper CTA Section (NEW) -->
+        <section id="whitepaper-cta" class="py-16 px-6 bg-gray-100 fade-in-section">
+            <div class="container mx-auto text-center">
+                <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6">Dive deeper into the WagyDog universe.</h3>
+                <a href="https://wagydog.gitbook.io/wagydog-whitepaper" target="_blank" class="btn-primary inline-flex items-center gap-2">
+                    <i class="fas fa-book-open"></i>
+                    Read The Whitepaper
+                </a>
             </div>
         </section>
 
@@ -209,7 +230,7 @@
                 <h2 class="text-4xl font-bold mb-4 text-white">Wagy <span class="gradient-text">NFT Collection</span></h2>
                 <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-12">Our exclusive, utility-packed NFTs are being crafted in the WagyDog nebula.</p>
                 <div class="content-card bg-white/10 border-white/20 w-full max-w-md mx-auto aspect-video flex items-center justify-center animate-float" style="animation-duration: 8s;">
-                    <h3 class="text-4xl font-black text-white animated-coming-soon">COMING SOON</h3>
+                    <h3 class="text-4xl animated-coming-soon">COMING SOON</h3>
                 </div>
             </div>
         </section>
@@ -330,26 +351,25 @@
                         x: Math.random() * canvas.width,
                         y: Math.random() * canvas.height,
                         radius: Math.random() * 1.5 + 0.5,
-                        vx: Math.floor(Math.random() * 50) - 25,
-                        vy: Math.floor(Math.random() * 50) - 25
+                        vx: (Math.random() - 0.5) * 0.5,
+                        vy: (Math.random() - 0.5) * 0.5
                     });
                 }
             }
 
             function animate() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
-                ctx.globalCompositeOperation = "lighter";
-
+                
                 for (let i = 0, x = stars.length; i < x; i++) {
                     let s = stars[i];
                     ctx.fillStyle = "#fff";
                     ctx.beginPath();
                     ctx.arc(s.x, s.y, s.radius, 0, 2 * Math.PI);
                     ctx.fill();
-                    s.x += s.vx / 60;
-                    s.y += s.vy / 60;
-                    if (s.x < 0 || s.x > canvas.width) s.vx = -s.vx;
-                    if (s.y < 0 || s.y > canvas.height) s.vy = -s.vy;
+                    s.x += s.vx;
+                    s.y += s.vy;
+                    if (s.x < 0 || s.x > canvas.width) s.x = Math.random() * canvas.width;
+                    if (s.y < 0 || s.y > canvas.height) s.y = Math.random() * canvas.height;
                 }
                 requestAnimationFrame(animate);
             }
@@ -364,5 +384,5 @@
 
     </script>
 </body>
-                    </html>
+    </html>
     
