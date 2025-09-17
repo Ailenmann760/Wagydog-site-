@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WagyDog - The Next Big Meme Coin on BNB Chain</title>
     
-    <!-- This points to your logo file in the repository -->
     <link rel="icon" type="image/jpeg" href="wagydog-logo.jpg">
 
     <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.ethers.io/lib/ethers-5.2.umd.min.js" type="application/javascript"></script>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;900&display=swap" rel="stylesheet">
     
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" xintegrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <style>
         body {
@@ -28,7 +28,7 @@
             -webkit-background-clip: text; -webkit-text-fill-color: transparent;
         }
         .btn-primary {
-            @apply bg-blue-500 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-blue-500/50 hover:bg-blue-600 transform hover:scale-105 transition-all duration-300 ease-in-out;
+            @apply bg-blue-500 text-white font-bold py-3 px-8 rounded-full shadow-lg hover:shadow-blue-500/50 hover:bg-blue-600 transform hover:scale-105 transition-all duration-300 ease-in-out disabled:bg-gray-400 disabled:shadow-none disabled:scale-100;
         }
         .btn-secondary {
             @apply bg-gray-200 text-gray-800 font-bold py-3 px-8 rounded-full shadow-md hover:shadow-lg hover:bg-gray-300 transform hover:scale-105 transition-all duration-300 ease-in-out;
@@ -93,7 +93,6 @@
 </head>
 <body class="relative">
 
-    <!-- Header & Navigation -->
     <header class="fixed top-0 left-0 right-0 z-50 bg-white/80 backdrop-blur-md shadow-sm">
         <div class="container mx-auto px-6 py-3 flex justify-between items-center">
             <a href="#home" class="flex items-center space-x-3">
@@ -102,7 +101,6 @@
             </a>
             <nav class="hidden md:flex items-center space-x-8">
                 <a href="#about" class="nav-link">About</a>
-                <!-- Whitepaper link added to menu -->
                 <a href="https://wagydog.gitbook.io/wagydog-whitepaper" target="_blank" class="nav-link">Whitepaper</a>
                 <a href="#roadmap" class="nav-link">Roadmap</a>
                 <a href="#nft" class="nav-link">NFTs</a>
@@ -117,7 +115,6 @@
         <div id="mobile-menu" class="hidden md:hidden bg-white/95">
              <div class="flex flex-col items-center space-y-6 py-8">
                 <a href="#about" class="nav-link mobile-link">About</a>
-                <!-- Whitepaper link added to mobile menu -->
                 <a href="https://wagydog.gitbook.io/wagydog-whitepaper" target="_blank" class="nav-link mobile-link">Whitepaper</a>
                 <a href="#roadmap" class="nav-link mobile-link">Roadmap</a>
                 <a href="#nft" class="nav-link mobile-link">NFTs</a>
@@ -129,7 +126,6 @@
     </header>
 
     <main>
-        <!-- Hero Section -->
         <section id="home" class="pt-32 pb-16 md:pt-48 md:pb-24 flex items-center px-6">
             <div class="container mx-auto grid md:grid-cols-2 gap-12 items-center">
                 <div class="text-center md:text-left">
@@ -150,7 +146,6 @@
             </div>
         </section>
 
-        <!-- About Wagydog Section (Space Theme) -->
         <section id="about" class="py-20 px-6 space-bg overflow-hidden fade-in-section">
             <canvas id="starfield"></canvas>
             <div class="container mx-auto space-content">
@@ -163,7 +158,6 @@
             </div>
         </section>
 
-        <!-- Whitepaper CTA Section (NEW) -->
         <section id="whitepaper-cta" class="py-16 px-6 bg-gray-100 fade-in-section">
             <div class="container mx-auto text-center">
                 <h3 class="text-2xl md:text-3xl font-bold text-gray-800 mb-6">Dive deeper into the WagyDog universe.</h3>
@@ -174,7 +168,6 @@
             </div>
         </section>
 
-        <!-- Roadmap Section -->
         <section id="roadmap" class="py-20 px-6 fade-in-section">
             <div class="container mx-auto">
                 <h2 class="text-4xl font-bold text-center mb-16 text-gray-800">Our <span class="gradient-text">Roadmap</span></h2>
@@ -223,19 +216,45 @@
             </div>
         </section>
 
-        <!-- Wagy NFT Section (Space Theme) -->
         <section id="nft" class="py-20 px-6 space-bg overflow-hidden fade-in-section">
              <canvas id="starfield2"></canvas>
-             <div class="container mx-auto text-center space-content">
-                <h2 class="text-4xl font-bold mb-4 text-white">Wagy <span class="gradient-text">NFT Collection</span></h2>
-                <p class="text-lg text-gray-400 max-w-2xl mx-auto mb-12">Our exclusive, utility-packed NFTs are being crafted in the WagyDog nebula.</p>
-                <div class="content-card bg-white/10 border-white/20 w-full max-w-md mx-auto aspect-video flex items-center justify-center animate-float" style="animation-duration: 8s;">
-                    <h3 class="text-4xl animated-coming-soon">COMING SOON</h3>
+             <div class="container mx-auto space-content">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-bold mb-4 text-white">Wagy <span class="gradient-text">NFT Collection</span></h2>
+                    <p class="text-lg text-gray-400 max-w-2xl mx-auto">Connect your wallet to mint exclusive WagyDog NFTs and explore the marketplace.</p>
+                </div>
+
+                <div id="nft-controls" class="max-w-3xl mx-auto content-card bg-white/10 border-white/20 flex flex-col md:flex-row items-center justify-between gap-6 mb-16">
+                    <div class="text-center md:text-left">
+                        <h3 class="text-2xl font-bold text-white">Get Your Wagy NFT</h3>
+                        <p id="wallet-status" class="text-gray-400 mt-1">Connect your wallet to begin</p>
+                    </div>
+                    <div class="flex-shrink-0">
+                        <button id="connect-wallet-btn" class="btn-primary">Connect Wallet</button>
+                        <button id="mint-nft-btn" class="btn-primary hidden" disabled>Mint Now (0.05 BNB)</button>
+                    </div>
+                </div>
+
+                <div id="nft-gallery-container" class="hidden">
+                    <div>
+                        <h3 class="text-3xl font-bold text-white mb-8 text-center">My <span class="gradient-text">Wagy NFTs</span></h3>
+                        <div id="my-nfts-gallery" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                            </div>
+                         <p id="no-my-nfts-message" class="text-center text-gray-400 text-lg hidden">You don't own any Wagy NFTs yet. Mint one above!</p>
+                    </div>
+
+                    <hr class="border-white/20 my-16">
+
+                    <div>
+                        <h3 class="text-3xl font-bold text-white mb-8 text-center">Marketplace <span class="gradient-text">Listings</span></h3>
+                        <div id="marketplace-gallery" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+                           </div>
+                        <p id="no-market-nfts-message" class="text-center text-gray-400 text-lg hidden">No Wagy NFTs are currently listed for sale.</p>
+                    </div>
                 </div>
             </div>
         </section>
 
-        <!-- Contract & Contact Section -->
         <section id="contact" class="py-20 px-6 fade-in-section">
             <div class="container mx-auto text-center max-w-2xl">
                 <h2 class="text-4xl font-bold mb-4 text-gray-800">Get <span class="gradient-text">WagyDog</span></h2>
@@ -254,7 +273,6 @@
             </div>
         </section>
         
-        <!-- Partners Section -->
         <section id="partners" class="py-20 px-6 bg-gray-100 fade-in-section">
             <div class="container mx-auto text-center">
                 <h2 class="text-3xl font-bold text-gray-800 mb-12">Partners & <span class="gradient-text">Supporters</span></h2>
@@ -272,7 +290,6 @@
             </div>
         </section>
 
-        <!-- Community / Socials Section -->
         <section id="community" class="py-20 px-6">
             <div class="container mx-auto text-center">
                 <h2 class="text-4xl font-bold">Join Our <span class="gradient-text">Community</span></h2>
@@ -289,7 +306,6 @@
         </section>
     </main>
 
-    <!-- Footer -->
     <footer class="py-8 px-6 border-t border-gray-200">
         <div class="container mx-auto sm:flex justify-between items-center text-center">
              <div class="flex justify-center space-x-6 mb-4 sm:mb-0">
@@ -305,6 +321,7 @@
     </footer>
 
     <script>
+        // --- EXISTING SCRIPT ---
         // Mobile menu toggle
         const menuBtn = document.getElementById('menu-btn');
         const mobileMenu = document.getElementById('mobile-menu');
@@ -383,6 +400,208 @@
         createStarfield('starfield2');
 
     </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- CONFIGURATION ---
+            const contractAddress = "0xYourContractAddressHere"; // <-- REPLACE WITH YOUR CONTRACT ADDRESS
+            const contractABI = [ // <-- REPLACE WITH YOUR ABI
+                "function mint() public payable",
+                "function listForSale(uint256 tokenId, uint256 price) public",
+                "function ownerOf(uint256 tokenId) view returns (address)",
+                "function purchase(uint256 tokenId) public payable" // Added for buying
+            ];
+            const mintPrice = "0.05"; // Mint price in BNB
+
+            // --- UI ELEMENTS ---
+            const connectBtn = document.getElementById('connect-wallet-btn');
+            const mintBtn = document.getElementById('mint-nft-btn');
+            const walletStatus = document.getElementById('wallet-status');
+            const galleryContainer = document.getElementById('nft-gallery-container');
+            const myNftsGallery = document.getElementById('my-nfts-gallery');
+            const marketplaceGallery = document.getElementById('marketplace-gallery');
+            const noMyNftsMsg = document.getElementById('no-my-nfts-message');
+            const noMarketNftsMsg = document.getElementById('no-market-nfts-message');
+
+            // --- DUMMY DATA ---
+            const dummyNfts = [
+                { tokenId: 1, name: 'Cosmic Wagy #1', image: 'https://via.placeholder.com/300/2E90FA/FFFFFF?text=Wagy+1', owner: '0x1111111111111111111111111111111111111111', isForSale: true, price: '0.1' },
+                { tokenId: 2, name: 'Nebula Pup #2', image: 'https://via.placeholder.com/300/F9D423/000000?text=Wagy+2', owner: '0x2222222222222222222222222222222222222222', isForSale: false, price: '0' },
+                { tokenId: 3, name: 'Galaxy Doggo #3', image: 'https://via.placeholder.com/300/D946EF/FFFFFF?text=Wagy+3', owner: '0x1111111111111111111111111111111111111111', isForSale: true, price: '0.25' },
+                { tokenId: 4, name: 'Star Chaser #4', image: 'https://via.placeholder.com/300/10B981/FFFFFF?text=Wagy+4', owner: '0xYourConnectedAddressHere', isForSale: false, price: '0' }, // Dummy owned NFT
+            ];
+
+            // --- STATE VARIABLES ---
+            let provider, signer, contract, connectedAccount;
+
+            // --- FUNCTIONS ---
+            const connectWallet = async () => {
+                if (typeof window.ethereum === 'undefined') {
+                    walletStatus.textContent = 'Please install MetaMask!';
+                    return;
+                }
+                try {
+                    provider = new ethers.providers.Web3Provider(window.ethereum);
+                    const accounts = await provider.send("eth_requestAccounts", []);
+                    signer = provider.getSigner();
+                    contract = new ethers.Contract(contractAddress, contractABI, signer);
+                    connectedAccount = accounts[0];
+                    updateUIForConnection();
+                } catch (error) {
+                    console.error("Failed to connect wallet:", error);
+                    walletStatus.textContent = 'Connection failed. Please try again.';
+                }
+            };
+
+            const updateUIForConnection = () => {
+                const shortAddress = `${connectedAccount.substring(0, 6)}...${connectedAccount.substring(connectedAccount.length - 4)}`;
+                walletStatus.innerHTML = `Connected: <span class="font-bold text-white">${shortAddress}</span>`;
+                connectBtn.classList.add('hidden');
+                mintBtn.classList.remove('hidden');
+                mintBtn.disabled = false;
+                galleryContainer.classList.remove('hidden');
+                displayNfts();
+            };
+
+            const displayNfts = () => {
+                myNftsGallery.innerHTML = '';
+                marketplaceGallery.innerHTML = '';
+
+                let myNftsCount = 0;
+                let marketNftsCount = 0;
+
+                // Use a version of dummy data where one NFT is owned by the current user
+                const personalizedDummyNfts = JSON.parse(JSON.stringify(dummyNfts).replace(/0xYourConnectedAddressHere/g, connectedAccount));
+
+                personalizedDummyNfts.forEach(nft => {
+                    if (nft.owner.toLowerCase() === connectedAccount.toLowerCase()) {
+                        myNftsGallery.innerHTML += createMyNftCard(nft);
+                        myNftsCount++;
+                    }
+                    if (nft.isForSale && nft.owner.toLowerCase() !== connectedAccount.toLowerCase()) {
+                        marketplaceGallery.innerHTML += createMarketplaceNftCard(nft);
+                        marketNftsCount++;
+                    }
+                });
+
+                noMyNftsMsg.style.display = myNftsCount === 0 ? 'block' : 'none';
+                noMarketNftsMsg.style.display = marketNftsCount === 0 ? 'block' : 'none';
+            };
+
+            const createMyNftCard = (nft) => {
+                return `
+                    <div class="content-card bg-white/10 border-white/20 text-white p-4 space-y-4">
+                        <img src="${nft.image}" alt="${nft.name}" class="rounded-lg w-full aspect-square object-cover">
+                        <h4 class="text-xl font-bold">${nft.name}</h4>
+                        <form class="list-form space-y-2" data-token-id="${nft.tokenId}">
+                            <input type="text" placeholder="Price in BNB (e.g., 0.1)" class="w-full bg-black/30 text-white rounded-md px-3 py-2 border border-white/20 focus:ring-2 focus:ring-blue-500 focus:outline-none" required>
+                            <button type="submit" class="w-full bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded-lg transition-colors">List for Sale</button>
+                        </form>
+                    </div>
+                `;
+            };
+
+            const createMarketplaceNftCard = (nft) => {
+                return `
+                     <div class="content-card bg-white/10 border-white/20 text-white p-4 space-y-3">
+                        <img src="${nft.image}" alt="${nft.name}" class="rounded-lg w-full aspect-square object-cover">
+                        <h4 class="text-xl font-bold">${nft.name}</h4>
+                        <p class="text-lg font-semibold text-yellow-400">${nft.price} BNB</p>
+                        <button class="buy-btn w-full btn-primary" data-token-id="${nft.tokenId}" data-price="${nft.price}">Buy Now</button>
+                    </div>
+                `;
+            };
+
+            const mintNFT = async () => {
+                if (!contract) return;
+                mintBtn.disabled = true;
+                mintBtn.textContent = 'Minting...';
+                try {
+                    const tx = await contract.mint({ value: ethers.utils.parseEther(mintPrice) });
+                    await tx.wait();
+                    alert('Mint successful!');
+                    // In a real app, you would now refresh the NFT list
+                } catch (error) {
+                    console.error("Minting failed:", error);
+                    alert('Minting failed. Check console for details.');
+                } finally {
+                    mintBtn.disabled = false;
+                    mintBtn.textContent = `Mint Now (${mintPrice} BNB)`;
+                }
+            };
+
+            const handleListForSale = async (event) => {
+                event.preventDefault();
+                if (!contract) return;
+
+                const form = event.target;
+                const tokenId = form.dataset.tokenId;
+                const price = form.querySelector('input').value;
+                const button = form.querySelector('button');
+
+                if (!price || isNaN(price) || parseFloat(price) <= 0) {
+                    alert('Please enter a valid price.');
+                    return;
+                }
+                
+                button.disabled = true;
+                button.textContent = 'Listing...';
+
+                try {
+                    const priceInWei = ethers.utils.parseEther(price);
+                    const tx = await contract.listForSale(tokenId, priceInWei);
+                    await tx.wait();
+                    alert(`NFT #${tokenId} listed for sale!`);
+                } catch (error) {
+                    console.error("Listing failed:", error);
+                    alert('Listing failed. Check console for details.');
+                } finally {
+                    button.disabled = false;
+                    button.textContent = 'List for Sale';
+                }
+            };
+            
+             const handleBuy = async (event) => {
+                if (!contract) return;
+                
+                const button = event.target;
+                const tokenId = button.dataset.tokenId;
+                const price = button.dataset.price;
+                
+                button.disabled = true;
+                button.textContent = 'Purchasing...';
+                
+                try {
+                    const priceInWei = ethers.utils.parseEther(price);
+                    const tx = await contract.purchase(tokenId, { value: priceInWei });
+                    await tx.wait();
+                    alert(`NFT #${tokenId} purchased successfully!`);
+                    // In a real app, you would now refresh the NFT list
+                } catch (error) {
+                    console.error("Purchase failed:", error);
+                    alert('Purchase failed. Check console for details.');
+                } finally {
+                    button.disabled = false;
+                    button.textContent = 'Buy Now';
+                }
+            };
+
+            // --- EVENT LISTENERS ---
+            connectBtn.addEventListener('click', connectWallet);
+            mintBtn.addEventListener('click', mintNFT);
+            
+            // Use event delegation for dynamically created forms and buttons
+            document.body.addEventListener('submit', (event) => {
+                if (event.target.classList.contains('list-form')) {
+                    handleListForSale(event);
+                }
+            });
+            document.body.addEventListener('click', (event) => {
+                if (event.target.classList.contains('buy-btn')) {
+                    handleBuy(event);
+                }
+            });
+        });
+    </script>
 </body>
-    </html>
-    
+</html>
