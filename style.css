@@ -1,0 +1,206 @@
+/* === BASE STYLES (from original file) === */
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: #F8F9FD;
+    color: #1E293B;
+    overflow-x: hidden;
+}
+
+.gradient-text {
+    background: linear-gradient(90deg, #2E90FA, #F9D423);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* Replicating Tailwind @apply rules in plain CSS */
+.btn-primary {
+    background-color: #3B82F6; /* bg-blue-500 */
+    color: white;
+    font-weight: 700;
+    padding: 0.75rem 2rem; /* py-3 px-8 */
+    border-radius: 9999px; /* rounded-full */
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); /* shadow-lg */
+    transition: all 0.3s ease-in-out;
+    transform: scale(1);
+}
+.btn-primary:hover {
+    box-shadow: 0 0 15px 0 rgb(59 130 246 / 0.5); /* hover:shadow-blue-500/50 */
+    background-color: #2563EB; /* hover:bg-blue-600 */
+    transform: scale(1.05);
+}
+.btn-primary:disabled {
+    background-color: #9CA3AF; /* disabled:bg-gray-400 */
+    box-shadow: none;
+    transform: scale(1);
+    cursor: not-allowed;
+}
+
+.btn-secondary {
+    background-color: #E5E7EB; /* bg-gray-200 */
+    color: #1F2937; /* text-gray-800 */
+    font-weight: 700;
+    padding: 0.75rem 2rem;
+    border-radius: 9999px;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1); /* shadow-md */
+    transition: all 0.3s ease-in-out;
+    transform: scale(1);
+}
+.btn-secondary:hover {
+     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1); /* hover:shadow-lg */
+     background-color: #D1D5DB; /* hover:bg-gray-300 */
+     transform: scale(1.05);
+}
+
+.content-card {
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(4px);
+    padding: 2rem; /* p-8 */
+    border-radius: 1.5rem; /* rounded-3xl */
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1); /* shadow-xl */
+    border: 1px solid #E5E7EB; /* border-gray-200 */
+    transition: all 0.3s ease-in-out;
+}
+.content-card:hover {
+    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25); /* hover:shadow-2xl */
+}
+
+.nav-link {
+    color: #374151; /* text-gray-700 */
+    font-weight: 600; /* font-semibold */
+    transition: color 0.3s;
+}
+.nav-link:hover {
+    color: #3B82F6; /* hover:text-blue-500 */
+}
+
+.social-icon {
+    color: #6B7280; /* text-gray-500 */
+    transition: all 0.3s;
+    transform: scale(1);
+}
+.social-icon:hover {
+    color: #3B82F6;
+    transform: scale(1.1);
+}
+
+.partner-logo {
+    height: 2.5rem; /* h-10 */
+    filter: grayscale(1);
+    opacity: 0.6;
+    transition: all 0.3s;
+}
+.partner-logo:hover {
+    filter: grayscale(0);
+    opacity: 1;
+}
+
+/* === Space Theme & Animations (from original file) === */
+.space-bg {
+    position: relative;
+    background-color: #0c0a18; /* Deep space blue */
+    color: #e0e0e0;
+}
+#starfield, #starfield2 {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+.space-content {
+    position: relative;
+    z-index: 1;
+}
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
+}
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
+.fade-in-section {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.fade-in-section.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* === NEW NFT DASHBOARD STYLES === */
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+}
+@media (min-width: 1024px) { /* lg breakpoint */
+    .dashboard-grid {
+        grid-template-columns: 350px 1fr; /* Fixed sidebar, flexible gallery */
+    }
+}
+
+.dashboard-controls {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.control-card {
+    background-color: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 1.5rem; /* rounded-3xl */
+    padding: 1.5rem; /* p-6 */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+}
+
+.dashboard-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.nft-card {
+    background-color: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 1rem;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.nft-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 0 20px rgba(46, 144, 250, 0.5); /* Glow effect */
+}
+
+.nft-card-image {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+}
+
+.nft-card-content {
+    padding: 1rem;
+}
+
+.nft-card-title {
+    font-size: 1.125rem; /* text-lg */
+    font-weight: 700;
+    color: white;
+}
+
+.nft-card-artist {
+    font-size: 0.875rem; /* text-sm */
+    color: #9CA3AF; /* text-gray-400 */
+}
+
+.nft-card-footer {
+    padding: 1rem;
+    margin-top: auto;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
