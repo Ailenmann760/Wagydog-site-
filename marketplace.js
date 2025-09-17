@@ -5,8 +5,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const { Web3Modal } = window.Web3Modal;
     const { ethers } = window.ethers;
     
-    // 1. Your Project ID has been added here.
-    const projectId = 'F177ccc83d51024d30957d2135be7ac0'; // <-- YOUR ID IS NOW HERE
+    // 1. Your Project ID is included here.
+    const projectId = 'F177ccc83d51024d30957d2135be7ac0';
     
     // 2. Configure wagmi client
     const bsc = {
@@ -113,8 +113,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             updateUIForConnection(connectedAccount);
             
-            // Listen for account changes
-            provider.on("accountsChanged", (accounts) => {
+            modalProvider.on("accountsChanged", (accounts) => {
                 if (accounts.length > 0) {
                     connectedAccount = accounts[0];
                     updateUIForConnection(connectedAccount);
@@ -157,7 +156,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     };
 
-    // --- DUMMY GALLERY FUNCTIONS ---
     const createNftCard = (nft) => `
         <div class="nft-card">
             <img src="${nft.image}" alt="${nft.name}" class="nft-card-image">
