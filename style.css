@@ -1,5 +1,4 @@
 /* === BASE STYLES === */
-
 body {
     font-family: 'Poppins', sans-serif;
     background-color: #F8F9FD;
@@ -7,14 +6,11 @@ body {
     overflow-x: hidden;
 }
 
-/* Gradient text */
 .gradient-text {
     background: linear-gradient(90deg, #2E90FA, #F9D423);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-
-/* === PRIMARY BUTTON === */
 
 .btn-primary {
     background-color: #3B82F6;
@@ -22,18 +18,15 @@ body {
     font-weight: 700;
     padding: 0.75rem 2rem;
     border-radius: 9999px;
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
-                0 4px 6px -4px rgb(0 0 0 / 0.1);
+    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
     transition: all 0.3s ease-in-out;
     transform: scale(1);
 }
-
 .btn-primary:hover {
     box-shadow: 0 0 15px 0 rgb(59 130 246 / 0.5);
     background-color: #2563EB;
     transform: scale(1.05);
 }
-
 .btn-primary:disabled {
     background-color: #9CA3AF;
     box-shadow: none;
@@ -41,70 +34,53 @@ body {
     cursor: not-allowed;
 }
 
-/* === SECONDARY BUTTON === */
-
 .btn-secondary {
     background-color: #E5E7EB;
     color: #1F2937;
     font-weight: 700;
     padding: 0.75rem 2rem;
     border-radius: 9999px;
-    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1),
-                0 2px 4px -2px rgb(0 0 0 / 0.1);
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
     transition: all 0.3s ease-in-out;
     transform: scale(1);
 }
-
 .btn-secondary:hover {
-    box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1),
-                0 4px 6px -4px rgb(0 0 0 / 0.1);
-    background-color: #D1D5DB;
-    transform: scale(1.05);
+     box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+     background-color: #D1D5DB;
+     transform: scale(1.05);
 }
-
-/* === CONTENT CARD === */
 
 .content-card {
     background-color: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(4px);
     padding: 2rem;
     border-radius: 1.5rem;
-    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
-                0 8px 10px -6px rgb(0 0 0 / 0.1);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
     border: 1px solid #E5E7EB;
     transition: all 0.3s ease-in-out;
 }
-
 .content-card:hover {
     box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
 }
-
-/* === NAVIGATION LINKS === */
 
 .nav-link {
     color: #374151;
     font-weight: 600;
     transition: color 0.3s;
 }
-
 .nav-link:hover {
     color: #3B82F6;
 }
-
-/* === SOCIAL ICONS === */
 
 .social-icon {
     color: #6B7280;
     transition: all 0.3s;
     transform: scale(1);
 }
-
 .social-icon:hover {
     color: #3B82F6;
     transform: scale(1.1);
 }
-
-/* === PARTNER LOGOS === */
 
 .partner-logo {
     height: 2.5rem;
@@ -112,22 +88,18 @@ body {
     opacity: 0.6;
     transition: all 0.3s;
 }
-
 .partner-logo:hover {
     filter: grayscale(0);
     opacity: 1;
 }
 
 /* === SPACE THEME & ANIMATIONS === */
-
 .space-bg {
     position: relative;
     background-color: #0c0a18;
     color: #e0e0e0;
 }
-
-#starfield,
-#starfield2 {
+#starfield, #starfield2 {
     position: absolute;
     top: 0;
     left: 0;
@@ -135,48 +107,34 @@ body {
     height: 100%;
     z-index: 0;
 }
-
 .space-content {
     position: relative;
     z-index: 1;
 }
-
 @keyframes float {
-    0% {
-        transform: translateY(0px);
-    }
-    50% {
-        transform: translateY(-20px);
-    }
-    100% {
-        transform: translateY(0px);
-    }
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-20px); }
+    100% { transform: translateY(0px); }
 }
-
 .animate-float {
     animation: float 6s ease-in-out infinite;
 }
-
 .fade-in-section {
     opacity: 0;
     transform: translateY(30px);
-    transition: opacity 0.8s ease-out,
-                transform 0.8s ease-out;
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
 }
-
 .fade-in-section.is-visible {
     opacity: 1;
     transform: translateY(0);
 }
 
 /* === NFT DASHBOARD STYLES === */
-
 .dashboard-grid {
     display: grid;
     grid-template-columns: 1fr;
     gap: 2rem;
 }
-
 @media (min-width: 1024px) {
     .dashboard-grid {
         grid-template-columns: 350px 1fr;
@@ -204,17 +162,13 @@ body {
     gap: 1.5rem;
 }
 
-/* === NFT CARDS === */
-
 .nft-card {
     background-color: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 1rem;
     overflow: hidden;
-    transition: transform 0.3s ease,
-                box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
-
 .nft-card:hover {
     transform: translateY(-8px);
     box-shadow: 0 0 20px rgba(46, 144, 250, 0.5);
@@ -251,25 +205,21 @@ body {
 }
 
 /* === WAGYDOG SWAP STYLES === */
-
 .swap-card {
     background-color: #ffffff;
     border-radius: 1.5rem;
     border: 1px solid #E5E7EB;
     padding: 1.5rem;
-    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
-                0 8px 10px -6px rgb(0 0 0 / 0.1);
+    box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
     transition: all 0.3s ease-in-out;
 }
-
 @media (min-width: 640px) {
     .swap-card {
         padding: 2rem;
     }
 }
-
 .swap-card:hover {
-    box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
+     box-shadow: 0 25px 50px -12px rgb(0 0 0 / 0.25);
 }
 
 .swap-card-header {
@@ -278,8 +228,6 @@ body {
     align-items: center;
     margin-bottom: 1.5rem;
 }
-
-/* === TOKEN INPUT === */
 
 .token-input-container {
     background-color: #F8F9FD;
@@ -310,18 +258,14 @@ body {
     outline: none;
     color: #1E293B;
 }
-
 .token-amount-input::-webkit-outer-spin-button,
 .token-amount-input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+  -webkit-appearance: none;
+  margin: 0;
 }
-
 .token-amount-input[type=number] {
-    -moz-appearance: textfield;
+  -moz-appearance: textfield;
 }
-
-/* === TOKEN SELECT BUTTON === */
 
 .token-select-btn {
     display: flex;
@@ -329,12 +273,10 @@ body {
     background-color: #ffffff;
     padding: 0.5rem 1rem;
     border-radius: 9999px;
-    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1),
-                0 1px 2px -1px rgb(0 0 0 / 0.1);
+    box-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
     cursor: pointer;
     transition: all 0.2s ease-in-out;
 }
-
 .token-select-btn:hover {
     background-color: #E5E7EB;
 }
@@ -351,8 +293,6 @@ body {
     font-size: 1rem;
     color: #1E293B;
 }
-
-/* === SWAP ARROW === */
 
 .swap-arrow-container {
     display: flex;
@@ -376,13 +316,10 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
 }
-
 .swap-arrow-btn:hover {
     transform: rotate(180deg);
     background-color: #D1D5DB;
 }
-
-/* === SWAP INFO === */
 
 .swap-info-container {
     padding: 1rem 0.5rem;
