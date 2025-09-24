@@ -326,3 +326,16 @@ body {
     margin-top: 1rem;
     text-align: center;
 }
+
+/* Ensure buttons are clickable */
+#header-connect-btn, #mobile-connect-btn, #swap-action-btn {
+    pointer-events: auto !important;
+    z-index: 100;
+    position: relative;
+}
+#mobile-menu {
+    z-index: 50;
+}
+#starfield, #starfield2 {
+    z-index: 0;
+}
