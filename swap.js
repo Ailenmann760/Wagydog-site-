@@ -1,5 +1,4 @@
 // --- WagyDog Swap Interface Functionality ---
-
 document.addEventListener('DOMContentLoaded', () => {
     // --- UI ELEMENTS ---
     const fromAmountInput = document.getElementById('from-amount');
@@ -33,20 +32,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const handleAmountChange = (e) => {
         const inputAmount = parseFloat(e.target.value);
         if (isNaN(inputAmount) || inputAmount <= 0) {
-             if(toAmountInput) toAmountInput.value = '';
-             if(e.target.id === 'to-amount' && fromAmountInput) {
-                 fromAmountInput.value = '';
-             }
-             return;
+            if (toAmountInput) toAmountInput.value = '';
+            if (e.target.id === 'to-amount' && fromAmountInput) {
+                fromAmountInput.value = '';
+            }
+            return;
         }
 
         if (e.target.id === 'from-amount') {
-            if(toAmountInput) toAmountInput.value = (inputAmount * 1500000).toString();
+            if (toAmountInput) toAmountInput.value = (inputAmount * 1500000).toString();
         } else {
-            if(fromAmountInput) fromAmountInput.value = (inputAmount / 1500000).toString();
+            if (fromAmountInput) fromAmountInput.value = (inputAmount / 1500000).toString();
         }
     };
-    
+
     // --- EVENT LISTENERS ---
     if (swapDirectionBtn) swapDirectionBtn.addEventListener('click', handleSwapDirection);
     if (fromAmountInput) fromAmountInput.addEventListener('input', handleAmountChange);
@@ -54,12 +53,37 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (swapActionButton) {
         swapActionButton.addEventListener('click', () => {
-            if(swapActionButton.textContent.trim() === "Swap"){
+            console.log('Swap action button clicked, text:', swapActionButton.textContent.trim());
+            if (swapActionButton.textContent.trim() === "Swap") {
                 alert("Swap functionality will be implemented soon!");
             } else {
-                const mainConnectButton = document.getElementById('header-connect-btn');
-                if(mainConnectButton) mainConnectButton.click();
+                if (window.Web3Modal && window.ethers) {
+                    const { Web3Modal } = window.Web3Modal;
+                    const projectId = 'F177ccc83d51024d30957d2135be7ac0'; // Your WalletConnect Project ID
+                    const web3ModalInstance = new Web3Modal({
+                        projectId,
+                        metadata: {
+                            name: 'WagyDog',
+                            description: 'WagyDog Website',
+                            url: window.location.href,
+                            icons: [window.location.origin + '/wagydog-logo.jpg']
+                        },
+                        chains: [bsc],
+                        enableAnalytics: false,
+                    });
+                    web3ModalInstance.open().then(modalProvider => {
+                        console.log('Web3Modal opened from swap.js');
+                    }).catch(error => {
+                        console.error('Web3Modal failed in swap.js:', error);
+                    });
+                } else {
+                    console.error('Web3Modal or Ethers.js not available in swap.js');
+                }
             }
         });
     }
+
+    // Initialize token displays
+    updateTokenDisplay(fromTokenSelect, fromToken);
+    updateTokenDisplay(toTokenSelect, toToken);
 });
