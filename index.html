@@ -52,17 +52,125 @@
             </div>
         </div>
     </header>
+
     <main>
-        <section id="home" class="pt-32 pb-16 md:pt-48 md:pb-24 flex items-center px-6"></section>
-        <section id="about" class="py-20 px-6 space-bg overflow-hidden fade-in-section"></section>
-        <section id="whitepaper-cta" class="py-16 px-6 bg-gray-100 fade-in-section"></section>
-        <section id="roadmap" class="py-20 px-6 fade-in-section"></section>
-        <section id="nft" class="py-20 px-6 space-bg overflow-hidden fade-in-section"></section>
-        <section id="swap" class="py-20 px-6 fade-in-section"></section>
-        <section id="partners" class="py-20 px-6 bg-gray-100 fade-in-section"></section>
-        <section id="community" class="py-20 px-6"></section>
+        <!-- Home Section -->
+        <section id="home" class="pt-32 pb-16 md:pt-48 md:pb-24 bg-gradient-to-r from-blue-900 to-purple-900 text-white text-center fade-in-section">
+            <h1 class="text-4xl md:text-6xl font-bold mb-4 gradient-text">Welcome to WagyDog</h1>
+            <p class="text-lg md:text-xl mb-6">The ultimate NFT marketplace and meme coin platform!</p>
+            <a href="#nft" class="btn-primary">Explore NFTs</a>
+            <canvas id="starfield" class="absolute top-0 left-0 w-full h-full"></canvas>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-20 px-6 space-bg overflow-hidden fade-in-section">
+            <div class="container mx-auto text-center space-content">
+                <h2 class="text-3xl font-bold text-white mb-6">About WagyDog</h2>
+                <p class="text-lg text-gray-300 mb-4">WagyDog is a unique blend of NFT collectibles and a meme-inspired cryptocurrency. Join our cosmic community and explore the universe of WagyDogs!</p>
+                <canvas id="starfield2" class="absolute top-0 left-0 w-full h-full"></canvas>
+            </div>
+        </section>
+
+        <!-- Whitepaper CTA Section -->
+        <section id="whitepaper-cta" class="py-16 px-6 bg-gray-100 fade-in-section">
+            <div class="container mx-auto text-center">
+                <h2 class="text-2xl font-bold mb-4">Learn More</h2>
+                <a href="https://wagydog.gitbook.io/wagydog-whitepaper" target="_blank" class="btn-secondary">Read Whitepaper</a>
+            </div>
+        </section>
+
+        <!-- Roadmap Section -->
+        <section id="roadmap" class="py-20 px-6 fade-in-section">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-6">Roadmap</h2>
+                <p class="text-lg mb-4">Phase 1: Launch NFT Collection<br>Phase 2: Token Integration<br>Phase 3: Community Expansion</p>
+            </div>
+        </section>
+
+        <!-- NFT Marketplace Section -->
+        <section id="nft" class="py-20 px-6 space-bg overflow-hidden fade-in-section">
+            <div class="container mx-auto space-content">
+                <h2 class="text-3xl font-bold text-white mb-6">NFT Marketplace</h2>
+                <div id="wallet-connection-info" class="mb-4 text-white">Please connect your wallet to view your NFTs.</div>
+                <div id="wallet-connected-info" class="mb-4 text-white hidden">
+                    Connected: <span id="wallet-address"></span>
+                    <button id="disconnect-btn" class="btn-secondary ml-4">Disconnect</button>
+                </div>
+                <button id="dashboard-connect-btn" class="btn-primary mb-4 hidden">Connect Wallet</button>
+                <button id="mint-nft-btn" class="btn-primary mb-4" disabled><i class="fas fa-star mr-2"></i> Mint Now</button>
+                <div id="nft-gallery" class="dashboard-gallery"></div>
+            </div>
+        </section>
+
+        <!-- Swap Section -->
+        <section id="swap" class="py-20 px-6 fade-in-section">
+            <div class="container mx-auto">
+                <h2 class="text-3xl font-bold mb-6">WagyDog Swap</h2>
+                <div class="swap-card">
+                    <div class="swap-card-header">
+                        <h3 class="text-xl font-semibold">Swap Tokens</h3>
+                    </div>
+                    <div class="token-input-container mb-4">
+                        <div class="token-input-header">
+                            <span>From</span>
+                        </div>
+                        <div class="token-input-body">
+                            <input type="number" id="from-amount" class="token-amount-input" placeholder="0.0">
+                            <div id="from-token-select" class="token-select-btn">
+                                <img src="" alt="" class="token-logo">
+                                <span class="token-name"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swap-arrow-container">
+                        <button id="swap-direction-btn" class="swap-arrow-btn"><i class="fas fa-exchange-alt"></i></button>
+                    </div>
+                    <div class="token-input-container">
+                        <div class="token-input-header">
+                            <span>To</span>
+                        </div>
+                        <div class="token-input-body">
+                            <input type="number" id="to-amount" class="token-amount-input" placeholder="0.0">
+                            <div id="to-token-select" class="token-select-btn">
+                                <img src="" alt="" class="token-logo">
+                                <span class="token-name"></span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="swap-info-container">
+                        <p>1 BNB = 1,500,000 WAGY (Estimated)</p>
+                    </div>
+                    <button id="swap-action-btn" class="btn-primary mt-4 w-full">Connect Wallet</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partners Section -->
+        <section id="partners" class="py-20 px-6 bg-gray-100 fade-in-section">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-6">Our Partners</h2>
+                <p class="text-lg mb-4">Coming soon...</p>
+            </div>
+        </section>
+
+        <!-- Community Section -->
+        <section id="community" class="py-20 px-6">
+            <div class="container mx-auto text-center">
+                <h2 class="text-3xl font-bold mb-6">Join Our Community</h2>
+                <p class="text-lg mb-4">Follow us on social media for updates!</p>
+                <div class="flex justify-center space-x-4">
+                    <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-discord"></i></a>
+                    <a href="#" class="social-icon"><i class="fab fa-telegram"></i></a>
+                </div>
+            </div>
+        </section>
     </main>
-    <footer class="py-8 px-6 border-t border-gray-200"></footer>
+
+    <footer class="py-8 px-6 border-t border-gray-200 text-center">
+        <p>&copy; 2025 WagyDog. All rights reserved.</p>
+    </footer>
+
     <script src="script.js"></script>
     <script src="marketplace.js"></script>
     <script src="swap.js"></script>
