@@ -1,7 +1,5 @@
 // --- General Website Functionality ---
-
 document.addEventListener('DOMContentLoaded', () => {
-
     // Mobile menu toggle
     const menuBtn = document.getElementById('menu-btn');
     const mobileMenu = document.getElementById('mobile-menu');
@@ -9,12 +7,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (menuBtn && mobileMenu) {
         menuBtn.addEventListener('click', () => {
+            console.log('Menu button clicked');
             mobileMenu.classList.toggle('hidden');
         });
+    } else {
+        console.warn('Menu button or mobile menu not found');
     }
 
     mobileLinks.forEach(link => {
         link.addEventListener('click', () => {
+            console.log('Mobile link clicked:', link.id || link.textContent);
             if (mobileMenu) {
                 mobileMenu.classList.add('hidden');
             }
@@ -37,7 +39,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Starfield Animation
     function createStarfield(canvasId) {
         const canvas = document.getElementById(canvasId);
-        if (!canvas) return;
+        if (!canvas) {
+            console.warn(`Canvas with ID ${canvasId} not found`);
+            return;
+        }
         const ctx = canvas.getContext('2d');
         
         let stars = [];
@@ -60,7 +65,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
         function animate() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
-            
             ctx.fillStyle = "#fff";
             for (let i = 0, x = stars.length; i < x; i++) {
                 let s = stars[i];
