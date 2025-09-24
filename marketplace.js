@@ -93,13 +93,14 @@ document.addEventListener('DOMContentLoaded', () => {
         const shortAddress = `${account.substring(0, 6)}...${account.substring(account.length - 4)}`;
         connectButtons.forEach(btn => {
             btn.textContent = shortAddress;
-            btn.disabled = false; // Allow reconnecting
+            btn.disabled = false;
         });
         if (walletConnectionDiv) walletConnectionDiv.classList.add('hidden');
         if (walletConnectedDiv) walletConnectedDiv.classList.remove('hidden');
         if (walletAddressP) walletAddressP.textContent = account;
         if (mintBtn) mintBtn.disabled = false;
         if (swapActionButton) swapActionButton.textContent = "Swap";
+        console.log('Connected to:', shortAddress);
     };
 
     const updateUIForDisconnection = () => {
@@ -115,6 +116,7 @@ document.addEventListener('DOMContentLoaded', () => {
         provider = null;
         signer = null;
         contract = null;
+        console.log('Disconnected');
     };
 
     const connectWallet = async () => {
@@ -127,6 +129,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const modalProvider = await web3Modal.open();
             provider = new ethers.providers.Web3Provider(modalProvider);
             const network = await provider.getNetwork();
+            console.log('Current network:', network.name, 'Chain ID:', network.chainId);
             if (network.chainId !== bsc.chainId) {
                 try {
                     await provider.send('wallet_switchEthereumChain', [{ chainId: `0x${bsc.chainId.toString(16)}` }]);
@@ -156,7 +159,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
             });
         } catch (error) {
-            console.error("Could not connect wallet:", error);
+            console.error("Could not connect wallet:", error.message);
             updateUIForDisconnection();
         }
     };
@@ -169,17 +172,20 @@ document.addEventListener('DOMContentLoaded', () => {
     const mintNFT = async () => {
         if (!signer) { alert('Please connect your wallet first.'); return; }
         const network = await provider.getNetwork();
+        console.log('Minting on network:', network.name, 'Chain ID:', network.chainId);
         if (network.chainId !== bsc.chainId) { alert(`Please switch your wallet to the ${bsc.name} to mint.`); return; }
         contract = new ethers.Contract(contractAddress, contractABI, signer);
         mintBtn.disabled = true;
         mintBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Processing...';
         try {
             const tx = await contract.mint(connectedAccount, { value: ethers.utils.parseEther(mintPrice) });
+            console.log('Mint transaction sent:', tx.hash);
             mintBtn.innerHTML = 'Waiting for confirmation...';
             await tx.wait();
             alert('Mint successful! Your WagyDog NFT is in your wallet.');
+            console.log('Mint confirmed:', tx.hash);
         } catch (error) {
-            console.error("Minting failed:", error);
+            console.error("Minting failed:", error.message);
             if (error.code === 'INSUFFICIENT_FUNDS') {
                 alert('Minting failed: You do not have enough tBNB for the mint price + gas.');
             } else if (error.data && error.data.message) {
@@ -223,7 +229,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 connectedAccount = await signer.getAddress();
                 updateUIForConnection(connectedAccount);
             } catch (error) {
-                console.error('Error checking cached connection:', error);
+                console.error('Error checking cached connection:', error.message);
             }
         }
     };
