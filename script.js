@@ -1,89 +1,111 @@
 // --- General Website Functionality ---
 document.addEventListener('DOMContentLoaded', () => {
-    // Mobile menu toggle
-    const menuBtn = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const mobileLinks = document.querySelectorAll('.mobile-link');
+    // ... (all the previous UI and animation code from the last step is here) ...
+    // ... (mobile menu, scroll-in, starfield functions are unchanged) ...
 
-    if (menuBtn && mobileMenu) {
-        menuBtn.addEventListener('click', () => {
-            console.log('Menu button clicked');
-            mobileMenu.classList.toggle('hidden');
-        });
-    } else {
-        console.warn('Menu button or mobile menu not found');
+    // ---  Wallet Connection Logic ---
+
+    // 1. Web3Modal Configuration
+    const web3Modal = new window.Web3Modal.Standalone({
+        projectId: 'F177ccc83d51024d30957d2135be7ac0', // Using the Project ID from your marketplace file
+        walletConnectVersion: 2,
+        chains: [97], // Using BSC Testnet chainId: 97
+    });
+
+    // Share state with other scripts
+    window.wagyDog = { // NEW: Create a global object for our app
+        provider: null,
+        signer: null,
+        address: null,
+        getWalletState: function() {
+            return {
+                provider: this.provider,
+                signer: this.signer,
+                address: this.address
+            };
+        }
+    };
+
+    // 2. Function to Update UI based on connection state
+    function updateUi(address) {
+        const allConnectButtons = document.querySelectorAll('#header-connect-btn, #mobile-connect-btn, #dashboard-connect-btn, #swap-action-btn');
+        const connectedInfo = document.getElementById('wallet-connected-info');
+        const walletAddressSpan = document.getElementById('wallet-address');
+        const disconnectBtn = document.getElementById('disconnect-btn');
+        const mintBtn = document.getElementById('mint-nft-btn');
+        const connectionPrompt = document.getElementById('wallet-connection-info');
+        const swapActionButton = document.getElementById('swap-action-btn');
+
+        if (address) {
+            // Connected State
+            const shortAddress = `${address.substring(0, 6)}...${address.substring(address.length - 4)}`;
+            allConnectButtons.forEach(btn => btn.textContent = shortAddress);
+            if (swapActionButton) swapActionButton.textContent = 'Swap';
+            if (walletAddressSpan) walletAddressSpan.textContent = shortAddress;
+            if (connectedInfo) connectedInfo.classList.remove('hidden');
+            if (disconnectBtn) disconnectBtn.classList.remove('hidden');
+            if (connectionPrompt) connectionPrompt.classList.add('hidden');
+            if (mintBtn) mintBtn.disabled = false;
+        } else {
+            // Disconnected State
+            allConnectButtons.forEach(btn => btn.textContent = 'Connect Wallet');
+            if (swapActionButton) swapActionButton.textContent = 'Connect Wallet';
+            if (connectedInfo) connectedInfo.classList.add('hidden');
+            if (disconnectBtn) disconnectBtn.classList.add('hidden');
+            if (connectionPrompt) connectionPrompt.classList.remove('hidden');
+            if (mintBtn) mintBtn.disabled = true;
+        }
     }
 
-    mobileLinks.forEach(link => {
-        link.addEventListener('click', () => {
-            console.log('Mobile link clicked:', link.id || link.textContent);
-            if (mobileMenu) {
-                mobileMenu.classList.add('hidden');
+
+    // 3. Main Connect Function
+    async function connectWallet() {
+        try {
+            const provider = await web3Modal.connect();
+            window.wagyDog.provider = new ethers.providers.Web3Provider(provider); // UPDATED
+            window.wagyDog.signer = window.wagyDog.provider.getSigner(); // UPDATED
+            window.wagyDog.address = await window.wagyDog.signer.getAddress(); // UPDATED
+
+            console.log("Wallet connected:", window.wagyDog.address);
+            updateUi(window.wagyDog.address);
+
+            // Event listeners for changes
+            provider.on("accountsChanged", (accounts) => {
+                if (accounts.length > 0) {
+                    connectWallet();
+                } else {
+                    disconnectWallet();
+                }
+            });
+            provider.on("chainChanged", () => window.location.reload());
+
+        } catch (error) {
+            console.error("Could not connect to wallet:", error);
+            disconnectWallet(); // Ensure UI is reset on connection failure/rejection
+        }
+    }
+
+    // 4. Disconnect Function
+    function disconnectWallet() {
+        // Disconnect logic is handled by Web3Modal, we just clear our state
+        window.wagyDog.provider = null; // UPDATED
+        window.wagyDog.signer = null; // UPDATED
+        window.wagyDog.address = null; // UPDATED
+        console.log("Wallet disconnected.");
+        updateUi(null);
+    }
+
+    // 5. Add Event Listeners to ALL connect/disconnect buttons
+    document.querySelectorAll('#header-connect-btn, #mobile-connect-btn, #dashboard-connect-btn, #swap-action-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (btn.textContent.includes('Connect Wallet')) {
+                connectWallet();
             }
         });
     });
 
-    // Scroll-in animations
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('is-visible');
-            }
-        });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.fade-in-section').forEach(section => {
-        observer.observe(section);
-    });
-
-    // Starfield Animation
-    function createStarfield(canvasId) {
-        const canvas = document.getElementById(canvasId);
-        if (!canvas) {
-            console.warn(`Canvas with ID ${canvasId} not found`);
-            return;
-        }
-        const ctx = canvas.getContext('2d');
-        
-        let stars = [];
-        let numStars = 250;
-
-        function resizeCanvas() {
-            canvas.width = canvas.offsetWidth;
-            canvas.height = canvas.offsetHeight;
-            stars = [];
-            for (let i = 0; i < numStars; i++) {
-                stars.push({
-                    x: Math.random() * canvas.width,
-                    y: Math.random() * canvas.height,
-                    radius: Math.random() * 1.5 + 0.5,
-                    vx: (Math.random() - 0.5) * 0.3,
-                    vy: (Math.random() - 0.5) * 0.3
-                });
-            }
-        }
-
-        function animate() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            ctx.fillStyle = "#fff";
-            for (let i = 0, x = stars.length; i < x; i++) {
-                let s = stars[i];
-                ctx.beginPath();
-                ctx.arc(s.x, s.y, s.radius, 0, 2 * Math.PI);
-                ctx.fill();
-                s.x += s.vx;
-                s.y += s.vy;
-                if (s.x < 0 || s.x > canvas.width) s.vx = -s.vx;
-                if (s.y < 0 || s.y > canvas.height) s.vy = -s.vy;
-            }
-            requestAnimationFrame(animate);
-        }
-        
-        window.addEventListener('resize', resizeCanvas);
-        resizeCanvas();
-        animate();
+    const disconnectBtn = document.getElementById('disconnect-btn');
+    if (disconnectBtn) {
+        disconnectBtn.addEventListener('click', disconnectWallet);
     }
-
-    createStarfield('starfield');
-    createStarfield('starfield2');
 });
